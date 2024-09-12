@@ -1,0 +1,181 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(#3b0449 25%, #130430 50%, #130430 50%, #c54d08 100%);
+}
+
+.wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  margin: 0 auto;
+  perspective: 360px;
+  perspective-origin: 50% 50%;
+}
+
+.top-plane, .bottom-plane {
+  width: 200%;
+  height: 130%;
+  position: absolute;
+  bottom: -30%;
+  left: -50%;
+  background-image: -webkit-linear-gradient(#130430 2px, transparent 2px), -webkit-linear-gradient(left, #130430 2px, transparent 2px);
+  background-size: 100px 100px, 100px 100px;
+  background-position: -1px -1px, -1px -1px;
+  transform: rotateX(85deg);
+  animation: planeMoveTop 2s infinite linear;
+}
+
+.bottom-plane {
+  transform: rotateX(-85deg);
+  top: -30%;
+  animation: planeMoveBot 2s infinite linear;
+}
+
+@keyframes planeMoveTop {
+  from {
+      background-position: 0px -100px, 0px 0px;
+  }
+  to {
+      background-position: 0px 0px, 100px 0px;
+  }
+}
+
+@keyframes planeMoveBot {
+  from {
+      background-position: 0px 0px, 0px 0px;
+  }
+  to {
+      background-position: 0px -100px, 100px 0px;
+  }
+}
+
+.centered-content {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 90%; /* Ajuste para telas menores */
+}
+
+.logo {
+  width: 220px; /* Ajuste para caber melhor em telas menores */
+  max-width: 100%;
+}
+
+.logobaixo {
+  width: 450px; /* Ajuste para caber melhor em telas menores */
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+.descriptionTitle {
+  font-size: 30px; /* Tamanho menor para telas menores */
+  font-weight: bolder;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+}
+
+.description {
+  font-size: 20px; /* Tamanho reduzido para melhor legibilidade em telas pequenas */
+  color: #fff;
+  margin-top: -15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 0 10px; /* Para evitar que o texto fique encostado nas laterais */
+  font-weight: normal;
+
+}
+
+.agenda {
+  list-style: none;
+  margin: 20px 0;
+  color: #000000;
+  font-size: 16px;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.897);
+  border-radius: 10px;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.agendasub {
+  list-style: none;
+  margin: 20px 0;
+  color: #000000;
+  font-size: 16px;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 4px solid rgba(255, 255, 255, 0.897);
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.agenda li {
+  margin: 5px 0;
+  position: relative;
+  padding: 5px 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.897);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.agenda li:hover {
+  background: rgba(255, 255, 255, 1);
+  border: 1.5px solid rgba(255, 255, 255, 0.897);
+  color: #0d0668;
+}
+
+.agenda li::before {
+  content: '⬜';
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.agenda li.checked::before {
+  content: '✅';
+  color: green;
+}
+
+.time {
+  font-weight: bolder;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+  .logo {
+      width: 150px; /* Reduz o tamanho da logo em telas menores */
+  }
+
+  .descriptionTitle {
+      font-size: 24px; /* Ajusta o tamanho da fonte para telas menores */
+  }
+
+  .description {
+      font-size: 16px;
+  }
+
+  .agenda {
+      font-size: 14px;
+  }
+}
+
+@media (max-height: 350px) {
+  .wrap {
+      perspective: 210px;
+  }
+}
